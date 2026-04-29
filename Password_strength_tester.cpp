@@ -3,6 +3,7 @@
 #include<thread>
 #include<cctype>
 #include<cstdlib>
+#include<windows.h>
 
 void tprt(const std::string &text, int Delay=30){
 
@@ -39,22 +40,22 @@ void PSWC(std::string Password){
     switch(score){
         case 0:
         case 1:
-            strength="Very Weak";
+            strength="\033[91mVery Weak\033[0m";
             break;
         case 2:
-            strength="Weak";
+            strength="\033[91mWeak\033[0m";
             break;
         case 3:
-            strength="Moderate";
+            strength="\033[93mModerate\033[0m";
             break;
         case 4:
-            strength="Strong";
+            strength="\033[92mStrong\033[0m";
             break;
         case 5:
-            strength="Very Strong";
+            strength="\033[92mVery Strong\033[0m";
             break;
         default:
-            strength="Unknown";
+            strength="\033[5mUnknown\033[0m";
             break;
     }
 
@@ -63,16 +64,28 @@ void PSWC(std::string Password){
     std::cout<<std::endl;
 }
 
+
+
+
+
+
+
+
 int main(){
+    // Enable ANSI escape codes for Windows 10/11
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwMode = 0;
+    GetConsoleMode(hOut, &dwMode);
+    SetConsoleMode(hOut, dwMode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 
     char choice='y';
     int runned=0;
 
-    tprt("welcome to the password strength tester! \n");
-    tprt("before we start, please tell us your name: ");
+    tprt("\033[1mwelcome to the password strength tester!\033[0m \n");
+    tprt("before we start, please tell us your name:\033[94m ");
     std::string name;
     std::getline(std::cin, name);
-    tprt("hello, "+name+"! let's test the strength of your password. \n");
+    tprt("\033[0mhello, \033[93m"+name+"\033[0m! let's test the strength of your password. \n");
 
     while(choice=='y' || choice=='Y'){
 
@@ -82,9 +95,10 @@ int main(){
         std::cout<<std::endl;
         std::cout<<std::endl;
         }
-        tprt("please enter your password: ");
+        tprt("please enter your password: \033[2;0;107m");
         std::string password;
         std::getline(std::cin, password);
+        std::cout<<"\033[0m"; // Reset color
         PSWC(password);
         tprt("do you want to test another password? (y/n): ");
         std::cin>>choice;
