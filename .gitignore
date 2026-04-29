@@ -1,0 +1,10 @@
+# Ignore VS Code settings
+.vscode/
+
+# Ignore build directories
+build/
+bin/
+obj/
+
+# Ignore log files
+*.log
