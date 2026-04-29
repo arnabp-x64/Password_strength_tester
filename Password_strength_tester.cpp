@@ -65,12 +65,6 @@ void PSWC(std::string Password){
 }
 
 
-
-
-
-
-
-
 int main(){
     // Enable ANSI escape codes for Windows 10/11
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
