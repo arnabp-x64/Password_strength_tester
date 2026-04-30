@@ -20,7 +20,6 @@ cd Password_strength_tester
 
 
 > TIP: You can also run this program with the provided `.exe` file easily
->> NOTE: The `System("CLS")` lines will not work on MAC
 
 ## 🖥️ Usage
 Run the program and enter a password to see its strength evaluation
