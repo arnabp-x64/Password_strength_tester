@@ -65,6 +65,16 @@ void PSWC(std::string Password){
 }
 
 
+void clearScreen() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+    // Includes macOS, Linux, and other Unix systems
+        system("clear");
+    #endif
+}
+
+
 int main(){
     // Enable ANSI escape codes for Windows 10/11
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -99,30 +109,18 @@ int main(){
         std::cin.ignore();
         runned++;
 
-        system("cls"); // Clear the console for the next test
+        clearScreen(); // Clear the console for the next test
 
     }
 
-    std::cout<<"Closing in 5 seconds..."<<std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    system("cls");
+    for(int i=5;i>0;i--){
 
-    std::cout<<"Closing in 4 seconds..."<<std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    system("cls");
+    
+        std::cout<<"Closing in "<<i<<" seconds..."<<std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        clearScreen();
 
-    std::cout<<"Closing in 3 seconds..."<<std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    system("cls");
-
-    std::cout<<"Closing in 2 seconds..."<<std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    system("cls");
-
-    std::cout<<"Closing in 1 seconds..."<<std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    system("cls");
-
+    }
 
     return 0;
 }

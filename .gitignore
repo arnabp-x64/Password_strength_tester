@@ -8,3 +8,6 @@ obj/
 
 # Ignore log files
 *.log
+
+# ignore large files
+*.exe
