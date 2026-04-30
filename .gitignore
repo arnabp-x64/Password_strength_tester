@@ -1,13 +1,24 @@
-# Ignore VS Code settings
-.vscode/
+# Compiled Executables (Windows & Linux)
+*.exe
+*.out
+*.app
 
-# Ignore build directories
-build/
+
+# Object Files and Static Libraries
+*.o
+*.obj
+*.a
+*.lib
+
+# Debugging files
+*.pdb
+*.idb
+
+# IDE Specific (VS Code)
+.vscode/
 bin/
 obj/
 
-# Ignore log files
-*.log
-
-# ignore large files
-*.exe
+# Local system files
+.DS_Store
+Thumbs.db
